@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript">
+	function check(){
+		//获得ajax对象
+		var xhr=getXhr();
+		console.log(xhr);
+		//发送请求
+		xhr.open('get','check.do?adminCode='+$('adminCode'),true);
+		xhr.onreadystatechange=function(){
+			//处理服务器返回的数据
+			if(xhr.readyState==4 && xhr.status==200){
+				var txt=xhr.responseText;
+				//console(txt);
+				//alert(txt);
+				$('msg').innerHTML=txt;
+			}
+		};
+		xhr.send(null);
+	}	
+	
+</script>
+</head>
+<body>
+ ajax编程演示 <br/>
+<form action="">
+	账号：<input id="adminCode" name="adminCode" onblur="check();"/>
+	<span id="msg"></span><br/>
+	密码：<input id="password" type="password" name="pwd"/><br/>
+	<input type="submit" value="确定"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function getXhr(){
+	var xhr=null;
+	if(window.XMLHttpRequest){
+		//非ie浏览器
+		xhr=new XMLHttpRequest();
+	}else{
+		xhr=new ActiveXObject('MicroSoft.XMLHttp');
+	}
+	return xhr;
+}
+</script>
+</head>
+<body>
+<a href="javascript:alert(getXhr())">click</a>
+</body>
+</html>
