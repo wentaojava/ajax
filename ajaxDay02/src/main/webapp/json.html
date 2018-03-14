@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*使用json语法表示一个对象*/
+	function f1(){
+		var obj={"code":"600877","name":"中国","price":6}
+		alert(obj.name);
+	}
+	
+	/*将json字符串转换成js对象*/
+	function f2(){
+		var str='"code":"600877","name":"中国","price":6';
+		//使用Js内置对象json提供的方法
+		var obj=JSON.parse(str);
+		alert(obj.code);
+	}
+
+</script>
+</head>
+<body>
+<a href="javascript:f2();">click</a>
+</body>
+</html>

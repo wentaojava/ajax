@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://player.youku.com/jsapi">
+
+
+
+jQuery(document).ready(function(){  
+    player = new YKU.Player('youkuplayer',{
+        client_id: 'd5aad9cba76f0a1c',
+        vid: '{{XNjYxNTE1NzUy}}',
+        events:{
+            onPlayerReady: function(){ onYoukuPlayerReady()
+                
+             },
+            onPlayStart: function(){ onYoukuPlayerStart() },
+            onPlayEnd: function(){ onYoukuPlayerEnd() }
+        }
+    });
+    function onYoukuPlayerReady(){ 
+        {% if request.GET.next %}
+            player.playVideo();  
+        {% else %}
+        {% endif %}
+    }
+    function onYoukuPlayerStart(){      
+    }
+    function onYoukuPlayerEnd(){         
+    }
+    
+});
+
+</script>
+</head>
+<body>
+<div id="youkuplayer" style="width:760px;height:420px"></div>
+</body>
+</html>

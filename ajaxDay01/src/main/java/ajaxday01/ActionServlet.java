@@ -5,6 +5,7 @@ package ajaxday01;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,8 @@ public class ActionServlet extends HttpServlet{
 		System.out.println("servive(");
 		String uri=req.getRequestURI();
 		String action=uri.substring(uri.lastIndexOf("/"), uri.lastIndexOf("."));
-		System.out.print(action);
+		System.out.println(action);
+		req.setCharacterEncoding("utf-8");
 		res.setContentType("text/html;charset=utf-8");
 		PrintWriter out=res.getWriter();
 		if("/check".equals(action)) {
@@ -33,6 +35,9 @@ public class ActionServlet extends HttpServlet{
 			}else {
 				out.println("账号可用");
 			}
+		}else if("/Random".equals(action)){
+			Integer i= new Random().nextInt(10);
+			out.println(i);
 		}
 		
 	}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/ajax.js"> </script>
+<script type="text/javascript">
+	function showStocks(){
+		var xhr=getXhr();
+		xhr.open('get','quoto.do',true);
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState ==4 && xhr.status==200){
+				var txt=xhr.responseText;
+				alert(txt);
+			}
+		};
+		xhr.send(null);
+	}
+
+</script>
+</head>
+<body onload="showStocks();">
+<div id="1">
+<div id="2">股票实时行情</div>
+<div id="3">
+	<table width="100%">
+		<thead>
+			<tr>
+				<td>代码</td>
+				<td>名称</td>
+				<td>价格</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript">
+        function random() {
+            var xhr=getXhr();
+            xhr.open('get',encodeURI("Random.do"),true);
+            xhr.onreadystatechange=function(){
+                //处理服务器返回的数据
+                if(xhr.readyState==4 && xhr.status==200){
+                    var txt=xhr.responseText;
+                    $('msg').innerHTML=txt;
+                }
+            };
+            xhr.send(null);
+
+        }
+    </script>
+</head>
+<body>
+ajax编程演示-随机数 <br/>
+<form action="">
+    随机数：<input id="adminCode" name="adminCode" onblur="random();"/>
+    <span id="msg"></span><br/>
+    密码：<input id="password" type="password" name="pwd"/><br/>
+    <input type="submit" value="确定"/>
+</form>
+</body>
+</html>

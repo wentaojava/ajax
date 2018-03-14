@@ -2,25 +2,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>get请求示例</title>
+<title>post请求示例</title>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript">
 	function check(){
-		//获得ajax对象
 		var xhr=getXhr();
-		console.log(xhr);
 		//发送请求
-		xhr.open('get',encodeURI(uri),true);
+		xhr.open('post','check.do',true);
+		xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
 		xhr.onreadystatechange=function(){
 			//处理服务器返回的数据
 			if(xhr.readyState==4 && xhr.status==200){
 				var txt=xhr.responseText;
+				//console(txt);
+				//alert(txt);
 				$('msg').innerHTML=txt;
 			}
 		};
-		xhr.send(null);
-	}	
-	
+		xhr.send('adminCode='+$F('adminCode'));
+	}
 </script>
 </head>
 <body>
