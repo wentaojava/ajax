@@ -54,6 +54,13 @@ public class ActionServlet extends HttpServlet{
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}
+		}else if("/getPrice".equals(action)) {
+			String f=req.getParameter("flight");
+			if("CA2201".equals(f)) {
+				out.println("头等舱：￥2400<br/>商户仓：￥2200");
+			}else {
+				out.println("头等舱：￥1800<br/>商户仓：￥1600");
+			}
 		}
 	}
 

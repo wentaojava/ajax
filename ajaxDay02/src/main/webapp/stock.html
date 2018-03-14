@@ -2,24 +2,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="js/ajax.js"> </script>
+<title>JQuery对ajax的支持</title>
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
 <script type="text/javascript">
-	function showStocks(){
-		var xhr=getXhr();
-		xhr.open('get','quoto.do',true);
-		xhr.onreadystatechange=function(){
-			if(xhr.readyState ==4 && xhr.status==200){
-				var txt=xhr.responseText;
-				alert(txt);
-			}
-		};
-		xhr.send(null);
-	}
-
+ $(function(){
+	 setInterval(quoto,3000);
+ });
+ 
+ function quoto(){
+	 $.ajax({
+		"url":"quoto.do",
+		 "type":"post",
+		 "dataType":"json",
+		"success":function(data){
+			     $("#tb1").empty();
+				 for(i=0;i<data.length;i++){
+					 var s=data[i];
+					 $("#tb1").append('<tr>'+
+							 '<td>'+s.code+'</td>'+
+							 '<td>'+s.name+'</td>'+
+							 '<td>'+s.price+'</td></tr>');
+				 }
+			 }
+	 });
+ };
 </script>
 </head>
-<body onload="showStocks();">
+<body>
 <div id="1">
 <div id="2">股票实时行情</div>
 <div id="3">
@@ -31,10 +40,8 @@
 				<td>价格</td>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-			
-			</tr>
+		<tbody id="tb1">
+
 		</tbody>
 	</table>
 </div>
