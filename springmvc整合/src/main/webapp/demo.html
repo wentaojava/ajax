@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring MVC AJAX DEMO</title>
+<script type="text/javascript" src="js/jquery-1.4.3.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#ary-btn").click(aryDemo);
+	$("#map-btn").click(mapDemo);
+});
+
+function mapDemo(){
+	$.ajax({
+		url:"demo/beansMap.do",
+		type:"get",
+		dataType:"json",
+		success:function(data){
+			console.log(data.map1.name);
+				$("#map-result").append(data.map1.name);
+		}
+	});
+}
+
+
+function aryDemo(){
+	console.log('click');
+	$.ajax({
+		"url":"demo/ary.do",
+		"type":"get",
+		"dataType":"json",
+		"success":function(data){
+			$('#ary-result').html(data+"");
+		}
+	});
+}
+</script>
+</head>
+<body>
+<h1>Spring MVC AJAX</h1>
+<h2>获取数据</h2>
+<input type="button" id="ary-btn" value="获取数组数据"/>
+<p id="ary-result"></p>
+
+<h2>获取map数据</h2>
+<input type="button" id="map-btn" value="获取map数据"/>
+<p id="map-result"></p>
+</body>
+</html>

@@ -1,2 +1,3 @@
 ajaxDay01:get请求演示,Post请求演示；乱码问题
 ajaxDay02:json演示；jQuery对ajax的支持
+springmvc整合：演示springmvc与ajax的通信
